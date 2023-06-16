@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.modal{
+    /*display: none;*/
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    min-height: 100%;
+    justify-items: auto;
+    align-items: center;
+    background-color: rgba(12, 11, 11, 0.7);
+}
+.images{
+    position:relative;
+    z-index: 2;
+    width: 60%;
+    max-height: 500px;
+    margin: auto auto;
+}
+img{
+    width: 100%;
+    height: 100%;
+    margin-top: 11%;
+    max-height: 500px;
+}
+button{
+    position: absolute;
+    z-index: 3;
+    top: 15px;
+    right: 15px;
+    border-radius: 50%;
+    font-size: 40px;
+    padding: 0 5px 5px 5px;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+}
+button a{
+  text-decoration: none;
+  color:black;
+}
+button:hover{
+    background: #717171;
+}
+.slide{
+    display: none;
+}
+.numbertext {
+    color: #070707;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+}
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 9;
+    bottom: -45px;
+    width: 100%;
+    text-align: center;
+}
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 70%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  /* The dots/bullets/indicators */
+  .divdot{
+    margin-top: 2%;
+  }
+.dot {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 25px 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }

@@ -1,0 +1,241 @@
+/* font importing */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+/* reseting css rules */
+
+
+:root {
+  --red: #d9071f;
+  --black: #000000;
+  --gray: #f7f7f7;
+}
+
+html,
+body {
+  width: 100%;
+  
+}
+
+.header-block img {
+  width: 50%;
+  position: absolute;
+  right: 25%;
+  bottom: 20%;
+}
+
+.header-block .text {
+  position: absolute;
+  bottom: 35%;
+  left: 15px;
+}
+
+.header-block .text h2 {
+  color: white;
+  margin-bottom: 20px;
+  text-align: right;
+  transform: translateX(-20px);
+  transition: transform 0.5s;
+  font-size: 40px;
+}
+
+.header-block .text p {
+  max-width: 380px;
+  color: white;
+  text-align: left;
+  transform: translateX(-20px);
+  transition: transform 0.4s;
+}
+
+.content2 {
+  max-width: 1000px;
+  min-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* Product Catalog */
+
+section .catalog {
+  width: 100vw;
+  padding: 100px;
+}
+
+section .card-wrapper {
+  max-width: 1000px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-gap: 30px;
+}
+
+section .card-item {
+  height: 400px;
+  background: var(--gray);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-content {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-item img {
+  width: 85%;
+}
+
+.card-item h3 {
+  width: 90%;
+  text-align: center;
+}
+
+.card-item h4 {
+  width: 90%;
+}
+
+.card-item p {
+  width: 90%;
+  font-style: italic;
+  color: #00000070;
+}
+
+.card-item h1 {
+  color: #00b30e;
+}
+
+.card-item button {
+  width: 90%;
+  padding: 15px 0px;
+  border: none;
+  background: var(--black);
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.card-item button:hover {
+  background: #dedede;
+  color: var(--black);
+}
+
+/* About */
+
+.about {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 10px;
+}
+
+.about-content {
+  max-width: 1000px;
+  min-width: 300px;
+  height: 600px;
+  background: #dedede3b;
+  margin: 0 auto;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left {
+  width: 25%;
+  min-width: 300px;
+  height: 100%;
+  background: #000000a1;
+  border-radius: 8px;
+}
+
+.right {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 10%;
+}
+
+.right h3 {
+  text-align: right;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.right p {
+  max-width: 90%;
+  font-size: 1em;
+  letter-spacing: 2px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Features */
+.features {
+  width: 100%;
+  height: 100%;
+  background: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0px;
+}
+
+.title-wrapper-features {
+  padding: 20px 0px;
+}
+
+.feature-card-block {
+  max-width: 1000px;
+  min-width: 300px;
+  height: 600px;
+  background: white;
+  margin: 0 auto;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  grid-gap: 30px;
+}
+
+.feature-card-item {
+  max-width: 420px;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #dedede3b;
+  border-radius: 4px;
+}
+
+.feature-text-content {
+  max-width: 60%;
+  margin: 5px;
+}
+
+.feature-card-item img {
+  width: 64px;
+  height: 64px;
+}
+
+/* Footer */
