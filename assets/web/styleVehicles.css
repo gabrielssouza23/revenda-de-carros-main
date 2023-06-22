@@ -238,4 +238,33 @@ section .card-item {
   height: 64px;
 }
 
+.filter-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.filter-item {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+.filter-item.active {
+  background-color: darkgray;
+  color: white;
+
+}
+
+.filter-item img{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /* Footer */

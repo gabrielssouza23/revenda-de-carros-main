@@ -41,7 +41,7 @@ class Web
 
     public function vehicles (array $data){
         $cars = new Cars();
-        if(!empty($data["brandName"])){           
+         if(!empty($data["brandName"])){           
             echo $this->view->render("sell",[
                 "cars" =>$cars->selectByBrand($data["brandName"]),
             ]);
