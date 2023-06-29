@@ -253,18 +253,19 @@ section .card-item {
 }
 
 .filter-item.active {
-  background-color: darkgray;
+  background-color: #009EDC;
   color: white;
 
 }
 
-.filter-item img{
+.filter-item img, p{
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 
 /* Footer */

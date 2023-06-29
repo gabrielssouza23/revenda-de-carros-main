@@ -19,7 +19,7 @@ $this->layout("_theme");
 
       <div class="filter-container">
     <div id="filterAll"class="filter-item active" data-brand="all">
-      <p>All</p>
+      <p>Todos</p>
     </div>
     <div class="filter-item" data-brand="bmw">
       <img id="filterVolks" src="<?= url('imagens/volkswagen-1-logo-svgrepo-com.svg');?>" alt="BMW" >
@@ -49,7 +49,7 @@ $this->layout("_theme");
 				            <img src="<?= url('imagens/clio.png');?>" alt="Car" />
 				            <div class="card-content">
 				            <h3><?= $car->name . " " . $car->model . " " . $car->description . " - " . $car->year; ?></h3>
-				            <h1 class="valor"><?= $car->price?></h1>
+				            <h1 class="valor"><?= "R$ " . $car->price?></h1>
 				            <button type="button">Ver detalhes</button>
 				            </div>
 			            </div>

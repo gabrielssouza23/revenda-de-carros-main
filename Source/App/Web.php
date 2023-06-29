@@ -32,6 +32,12 @@ class Web
 
     }
 
+    public function login (array $data) : void
+    {
+        echo $this->view->render("user-auth",[]);
+    }
+
+
     public function about()
     {
         //echo "Olá, Mundo! Sobre";
@@ -56,20 +62,6 @@ class Web
     public function vehicleBuy (){
         echo $this->view->render("vehicleBuy");
     }
-    public function faq ()
-    {
-        $faqs = new Faq();
-        var_dump($faqs->selectAll());
-
-        //echo $this->view->render("home",[
-        //    "faqs" => $faqs->selectAll(),
-        //]);
    
     }
-    // public function faq
-    // $faq = new Faq();
-    
-    // echo $this->view->render("home", [
-    //     "faq" => $faq->selectFirst(),
-    // ]);
-}
+  

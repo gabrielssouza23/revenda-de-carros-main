@@ -10,6 +10,9 @@ $route = new Router(url(), ":");
 
 $route->namespace("Source\App");
 
+$route->get("/registro","Web:register");
+$route->get("/login","Web:login");
+
 $route->group(null);
 
 $route->get("/", "Web:home");
