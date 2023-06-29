@@ -32,11 +32,23 @@ class Web
 
     }
 
+    public function register(array $data)
+    {
+        if(!empty($data)){
+            $response = json_encode($data);
+            echo $response;
+            return;
+        }
+
+        echo $this->view->render("register-clean",[
+           // "categories" => $this->categories
+        ]);
+    }
+
     public function login (array $data) : void
     {
         echo $this->view->render("user-auth",[]);
     }
-
 
     public function about()
     {

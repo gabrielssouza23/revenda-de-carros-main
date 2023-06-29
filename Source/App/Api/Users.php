@@ -56,7 +56,7 @@ class Users extends Api
     {
         $response = [
             "code" => 200,
-            "type" => "error",
+            "type" => "success",
             "message" => "Resposta da API"
         ];
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);

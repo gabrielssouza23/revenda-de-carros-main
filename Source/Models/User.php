@@ -62,7 +62,7 @@ class User {
 
     public function insert () : bool
     {
-        $query = "INSERT INTO users VALUES (NULL,:name,:email,:password)";
+        $query = "INSERT INTO users VALUES (:name,:email,:password, NULL)";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
@@ -79,6 +79,20 @@ class User {
             $this->message = "Erro: {$e->getMessage()}";
             return false;
         }
+    }
+    public function auth (string $email, string $password) : bool{
+        $query = "SELECT * 
+                  FROM users 
+                  WHERE email LIKE :email AND password LIKE :password";
+
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":password", $password);
+        $stmt->execute();
+        if($stmt->rowCount() == 0) {
+            return false;
+        }
+        return true;
     }
 
 }
