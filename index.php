@@ -20,10 +20,13 @@ $route->get("/sobre", "Web:about");
 $route->get("/veiculos","Web:vehicles");
 $route->get("/venda","Web:vehicleBuy");
 
+$route->get("/add","Web:carCreate");
 $route->get("/veiculos/{brandName}","Web:vehicles");
 
 $route->group("/app");
 $route->get("/", "App:home");
+
+
 
 $route->group(null);
 

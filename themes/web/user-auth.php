@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V3</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<?= url('images/icons/favicon.ico')?>"/>
+	<link rel="icon" type="image/png" href="<?= url('imagens/icons/favicon.ico')?>"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= url('vendor/bootstrap/css/bootstrap.min.css')?>">
 <!--===============================================================================================-->
@@ -24,31 +24,31 @@
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="<?= url('vendor/daterangepicker/daterangepicker.css')?>">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= url('css/util.css')?>">
-	<link rel="stylesheet" type="text/css" href="<?= url('css/main.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?= url('assets/web/util.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?= url('assets/web/main.css')?>">
 <!--===============================================================================================-->
 </head>
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('<?= url("images/bg-01.jpg")?>');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
+						<img src="<?= url('imagens/automax.svg') ?>" alt="">
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Login
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="email" name="email" placeholder="Email" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password" required minlength="8">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -57,6 +57,12 @@
 						<button class="login100-form-btn">
 							Login
 						</button>
+						<div class="response">
+							<p class="response__p" ></p>
+						</div>
+						<a href="<?= url('/registro') ?>" class="login100-form-link">
+                            Não tem uma conta? Clique aqui para criar uma!.
+                        </a>
 					</div>
 				</form>
 			</div>
@@ -67,21 +73,21 @@
 	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?= url('vendor/jquery/jquery-3.2.1.min.js')?>"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="<?= url('vendor/animsition/js/animsition.min.js')?>"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?= url('vendor/bootstrap/js/popper.js')?>"></script>
+	<script src="<?= url('vendor/bootstrap/js/bootstrap.min.js')?>"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="<?= url('vendor/select2/select2.min.js')?>"></script>
 <!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="<?= url('vendor/daterangepicker/moment.min.js')?>"></script>
+	<script src="<?= url('vendor/daterangepicker/daterangepicker.js')?>"></script>
 <!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="<?= url('vendor/countdowntime/countdowntime.js')?>"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="<?= url('assets/web/main.js')?>"></script>
 
 </body>
 </html>
@@ -92,7 +98,7 @@
     async function request (url, options) {
         try {   
             const response = await fetch (url, options);
-            const data = await response.text();
+            const data = await response.json();
             return data;
         } catch (err) {
             console.error(err);
@@ -112,6 +118,14 @@
         };
         const resp = await request(url, options);
         console.log(resp);
+		if (resp.type !== "success") {
+			//alert("Erro ao fazer login!");
+			let responseDiv = document.querySelector(".response__p");
+			responseDiv.innerHTML = "Erro ao fazer login, senha ou email incorretos!";
+			responseDiv.classList.add("error");
+		} else {
+			window.location.href = "<?= url("/");?>";
+		}
     });
 
 </script>

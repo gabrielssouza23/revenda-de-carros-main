@@ -32,22 +32,32 @@ class Web
 
     }
 
-    public function register(array $data)
-    {
-        if(!empty($data)){
-            $response = json_encode($data);
-            echo $response;
-            return;
-        }
+    // public function register(array $data)
+    // {
+    //     if(!empty($data)){
+    //         $response = json_encode($data);
+    //         echo $response;
+    //         return;
+    //     }
 
-        echo $this->view->render("register-clean",[
-           // "categories" => $this->categories
-        ]);
-    }
+    //     echo $this->view->render("register-clean",[
+    //        // "categories" => $this->categories
+    //     ]);
+    // }
 
     public function login (array $data) : void
     {
         echo $this->view->render("user-auth",[]);
+    }
+
+    public function register (array $data) : void
+    {
+        echo $this->view->render("register",[]);
+    }
+    
+    public function carCreate (array $data) : void
+    {
+        echo $this->view->render("carCreate",[]);
     }
 
     public function about()
@@ -75,5 +85,6 @@ class Web
         echo $this->view->render("vehicleBuy");
     }
    
+
     }
   
