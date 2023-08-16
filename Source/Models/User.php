@@ -95,4 +95,18 @@ class User {
         return true;
     }
 
+    public function selectAllUsers()
+    {
+        $query = "
+            SELECT
+                u.id,
+                u.name,
+                u.email
+            FROM
+                users u;
+        ";
+    
+        $stmt = Connect::getInstance()->query($query);
+        return $stmt->fetchAll();
+    }
 }

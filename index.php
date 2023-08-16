@@ -26,6 +26,12 @@ $route->get("/veiculos/{brandName}","Web:vehicles");
 $route->group("/app");
 $route->get("/", "App:home");
 
+$route->group("/admin");
+$route->get("/", "Adm:home");
+$route->get("/carros", "Adm:carCreate");
+$route->get("/usuarios", "Adm:userPanel");
+$route->group(null);
+
 
 
 $route->group(null);

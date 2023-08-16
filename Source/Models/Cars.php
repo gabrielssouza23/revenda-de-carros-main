@@ -12,13 +12,26 @@ class Cars{
     private $year;
     private $description;
 
-    public function selectAllCars ()
+    public function selectAllCars()
     {
-        $query = "SELECT c.model, b.name, c.price, c.year, c.description FROM cars c 
-        JOIN brands b ON c.brands_id = b.id;";
+        $query = "
+            SELECT
+                c.id,
+                c.model,
+                b.name AS brand,
+                c.price,
+                c.year,
+                c.description
+            FROM
+                cars c
+            JOIN
+                brands b ON c.brands_id = b.id;
+        ";
+    
         $stmt = Connect::getInstance()->query($query);
         return $stmt->fetchAll();
     }
+    
     public function selectFirstCars(){
         $query = "SELECT c.*, b.name
         FROM cars c

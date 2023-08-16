@@ -55,10 +55,6 @@ class Web
         echo $this->view->render("register",[]);
     }
     
-    public function carCreate (array $data) : void
-    {
-        echo $this->view->render("carCreate",[]);
-    }
 
     public function about()
     {

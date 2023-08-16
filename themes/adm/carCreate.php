@@ -24,50 +24,75 @@
 </head>
 <body>	
 	<div class="container" id="listing">
-		<h3>Listando</h3>
+		<h3>Listando Carros</h3>
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Code</th>
+					<th>ID</th>
 					<th>Description</th>
-					<th>UOM</th>
+					<th>Brand</th>
+					<th>model</th>
+					<th>Price</th>
+					<th>year</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>NU-CH-000001</td>
-					<td>Chocolate chip cookies</td>
-					<td>Pack</td>
-					<td>
-						<a href="#" class="btn btn-default">Edit</a> &nbsp; 
-						<a href="#" class="btn btn-default">Default</a>
-					</td>
-				</tr>
+				<?php
+				foreach($cars as $car){
+					?>
+					<tr>
+						<td><?=$car->id?></td>
+						<td><?=$car->description?></td>
+						<td><?=$car->brand?></td>
+						<td><?=$car->model?></td>
+						<td><?=$car->price?></td>
+						<td><?=$car->year?></td>
+						<td>
+							<a href="#" class="btn btn-default">Edit</a> &nbsp; 
+							<a href="#" class="btn btn-default">Default</a>
+						</td>
+					</tr>
+				<?php
+				}
+				?>
 			</tbody>
 		</table>
 	</div>
 	
+
+            
+  
+
 	<div class="container" id="new-entry">
 		<h3>New Entry</h3>
 		<form>
 			<div class="form-group">
-				<label class="inline-80">Code</label> &nbsp;
-				<input type="text" id="code" />
+				<label class="inline-80">Model</label> &nbsp;
+				<input type="text" id="model" name="model" />
+			</div>
+			<div class="form-group">
+				<label class="inline-80">Brand</label> &nbsp;
+				<input type="text" id="brand" name="brand"/>
 			</div>
 			<div class="form-group">
 				<label class="inline-80">Description</label> &nbsp;
-				<input type="text" id="descr" />
+				<input type="text" id="descr" name="descr"/>
 			</div>
 			<div class="form-group">
-				<label class="inline-80">UOM</label> &nbsp;
-				<input type="text" id="uom" />
+				<label class="inline-80">Price</label> &nbsp;
+				<input type="text" id="price" name="price" />
+			</div>
+			<div class="form-group">
+				<label class="inline-80">Year</label> &nbsp;
+				<input type="text" id="year" name="year"/>
 			</div>
 			<div class="form-group">
 				<input type="submit" value="Save" class="btn btn-primary" />
 			</div>
 		</form>
 	</div>
+
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
