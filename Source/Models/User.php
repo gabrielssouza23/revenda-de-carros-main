@@ -62,10 +62,15 @@ class User {
 
     public function insert () : bool
     {
+        if($this->findByEmail($this->email)){
+            $this->message = "E-mail já cadastrado!";
+            return false;
+        }
         $query = "INSERT INTO users VALUES (:name,:email,:password, NULL)";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
+                $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $stmt->bindParam(":password",$this->password);
         try {
             $stmt->execute();
@@ -81,19 +86,53 @@ class User {
         }
     }
     public function auth (string $email, string $password) : bool{
-        $query = "SELECT * 
-                  FROM users 
-                  WHERE email LIKE :email AND password LIKE :password";
+        $query = "SELECT * FROM users WHERE email LIKE :email";
 
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":password", $password);
         $stmt->execute();
-        if($stmt->rowCount() == 0) {
+
+        if ($stmt->rowCount() == 0) {
+            $this->message = "Usuário não encontrado";
             return false;
         }
+        $user = $stmt->fetch();
+
+        if (!password_verify($password, $user->password)) {
+            $this->message = "Senha incorreta!";
+            return false;
+        }
+
+        $this->id = $user->id;
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->message = "Usuário autenticado com sucesso";
         return true;
     }
+
+    public function findByEmail (string $email) : bool
+    {
+        $query = "SELECT * FROM users WHERE email = :email";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":email",$email);
+        try {
+            $stmt->execute();
+            if($stmt->rowCount()){
+                $user = $stmt->fetch();
+                $this->id = $user->id;
+                $this->name = $user->name;
+                $this->email = $user->email;
+                return true;
+            }
+            $this->message = "Usuário não encontrado!";
+            return false;
+        } catch (PDOException $e) {
+            $this->message = "Erro: {$e->getMessage()}";
+            return false;
+        }
+    }
+
+    
 
     public function selectAllUsers()
     {

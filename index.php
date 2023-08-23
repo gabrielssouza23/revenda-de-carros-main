@@ -25,6 +25,7 @@ $route->get("/veiculos/{brandName}","Web:vehicles");
 
 $route->group("/app");
 $route->get("/", "App:home");
+$route->group(null);
 
 $route->group("/admin");
 $route->get("/", "Adm:home");
@@ -34,7 +35,6 @@ $route->group(null);
 
 
 
-$route->group(null);
 
 $route->dispatch();
 

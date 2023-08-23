@@ -265,11 +265,9 @@
 			<li><button class="join-button" href="#">Join</button></li>
 		</ul>
 	</nav>
-	<div class="welcome-message">
-		<h1>Bem-vindo à Página de Administradores</h1>
-		<p>Seja você mesmo e gerencie com confiança!</p>
-		<p>Utilize a barra de navegação acima ⬆️</p>
-	</div>
+	<?php
+    echo $this->section("content");
+    ?>
 	<script async>
 		const hamburger = document.querySelector(".hamburger");
 		const navLinks = document.querySelector(".nav-links");

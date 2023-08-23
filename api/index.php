@@ -13,8 +13,13 @@ $route->namespace("Source\App\Api");
 $route->get("/user","Users:read");
 $route->post("/user","Users:create");
 
-$route->post("/user/login","Users:login");
+//$route->post("/user/login","Users:login");
 
+//$route->get("/user/test", "Users:testToken");
+$route->get("/user/login","Users:login");
+//$route->get("/user/adresses","Users:listAdresses");
+
+$route->get("/faqs","Faqs:listFaqs");
 $route->dispatch();
 
 /** ERROR REDIRECT */
