@@ -19,6 +19,7 @@ $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
 $route->get("/veiculos","Web:vehicles");
 $route->get("/venda","Web:vehicleBuy");
+$route->get("/api-faqs","Web:apiFaq");
 
 $route->get("/add","Web:carCreate");
 $route->get("/veiculos/{brandName}","Web:vehicles");

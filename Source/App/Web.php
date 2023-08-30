@@ -80,7 +80,11 @@ class Web
     public function vehicleBuy (){
         echo $this->view->render("vehicleBuy");
     }
-   
+    
+    public function apiFaq (array $data)
+    {
+        echo $this->view->render("api-faqs",[]);
+    }
 
     }
   

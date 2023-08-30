@@ -37,9 +37,9 @@ class Api
             }
 
             $this->token = (new TokenJWT())->create([
-               'idUser' => $this->user->getId(),
                 'userEmail' => $this->user->getEmail(),
                 'name' => $this->user->getName(),
+                'idUser' => $this->user->getId(),
                 'userType' => 'User'
             ]);
 
