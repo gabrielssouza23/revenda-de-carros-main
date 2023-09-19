@@ -2,6 +2,8 @@
 
 namespace Source\App\Api;
 
+use Source\Models\Address;
+
 use Source\Models\User;
 
 class Users extends Api
@@ -113,7 +115,16 @@ class Users extends Api
         
 
     }
-    public function testToken (array $data) : void{
-        echo "ola";
+    // public function testToken (array $data) : void{
+    //     echo "ola";
+    // }
+    public function listAdresses (array $data): void
+    {
+
+        if($this->user){
+            $adresses = new Address();
+            $this->back($adresses->selectByIdUser($this->user->getId()),200);
+        }
+
     }
 }

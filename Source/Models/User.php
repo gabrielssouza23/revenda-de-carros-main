@@ -60,7 +60,7 @@ class User {
 
     public function getPassword(): mixed
     {
-        return $this->password;
+        return $this->password; 
     }
 
     public function setPassword(mixed $password): void
