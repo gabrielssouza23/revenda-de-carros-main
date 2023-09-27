@@ -5,6 +5,8 @@ namespace Source\App\Api;
 use Firebase\JWT\JWT;
 use Source\Core\TokenJWT;
 use Source\Models\User;
+use Source\Models\Adm;
+
 
 class Api
 {

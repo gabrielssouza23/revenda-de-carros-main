@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 16, 2023 at 03:00 AM
+-- Generation Time: Sep 27, 2023 at 02:52 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -20,6 +20,52 @@ SET time_zone = "+00:00";
 --
 -- Database: `bd_revenda_de_carros`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addresses`
+--
+
+DROP TABLE IF EXISTS `addresses`;
+CREATE TABLE IF NOT EXISTS `addresses` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `street` varchar(255) NOT NULL,
+  `number` varchar(255) NOT NULL,
+  `complement` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_addresses_users_idx` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`id`, `user_id`, `street`, `number`, `complement`) VALUES
+(1, 17, 'centro', '1668', 'casa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adms`
+--
+
+DROP TABLE IF EXISTS `adms`;
+CREATE TABLE IF NOT EXISTS `adms` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `adms`
+--
+
+INSERT INTO `adms` (`id`, `name`, `email`, `password`) VALUES
+(1, 'gabriel', 'gabriel@adm.com', '12345678');
 
 -- --------------------------------------------------------
 
@@ -118,17 +164,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(100) DEFAULT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`name`, `email`, `password`, `id`) VALUES
-('gabriel', 'gabriel@gmail.com', '12345', 1),
-('gabriel2', 'gabriel2@gmail.com', '12345678', 6),
-('xandico', 'xandeco@gmail.com', 'xandelas2', 4),
-('Fábio Santos', 'fabio@gmail.com', '12345678', 15);
+('gabriel', 'gabriel22@gmail.com', '$2y$10$uHiZRAgu3x88UfnmirhIU.CcXmnVrGEYwRgVO/kS6P9jx.nU/MawO', 17),
+('belli', 'belli@gmail.com', '$2y$10$3IZPM12kwVrG6jxi5GX04O7q8tgvPqanfOLjHLpiy9HQLFaJnzIty', 18);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,12 +6,7 @@
         <button type="submit">Login</button>
     </form>
 </div>
-<div>
-    <button id="listAddress">Lista De Endereços</button>
-</div>
-<div id="address">
-    Lista
-</div>
+
 <script type="module" async>
     import {request, requestDebugError} from "<?php echo url("/assets/_shared/functions.js"); ?>";
     const formLogin = document.querySelector("#formLogin");
@@ -32,21 +27,21 @@
         });
     });
 
-    document.querySelector("#listAddress").addEventListener("click",() => {
-        const userLogin = JSON.parse(localStorage.getItem("userLogin"));
-        console.log(userLogin.user.token);
-        const optionsAddress = {
-            method: "get",
-            headers: {
-                token : userLogin.user.token
-            }
-        };
-        const urlAddress = "<?= url("api/user/adresses"); ?>";
-        fetch(urlAddress,optionsAddress).then(response => {
-            response.json().then(address => {
-                console.log(address);
-            })
-        })
-    });
+    // document.querySelector("#listAddress").addEventListener("click",() => {
+    //     const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+    //     console.log(userLogin.user.token);
+    //     const optionsAddress = {
+    //         method: "get",
+    //         headers: {
+    //             token : userLogin.user.token
+    //         }
+    //     };
+        // const urlAddress = "<?= url("api/user/adresses"); ?>";
+    //     fetch(urlAddress,optionsAddress).then(response => {
+    //         response.json().then(address => {
+    //             console.log(address);
+    //         })
+    //     })
+    // });
 
 </script>
