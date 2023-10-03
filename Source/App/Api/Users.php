@@ -26,33 +26,6 @@ class Users extends Api
 
     public function create (array $data) : void
     {
-    //    if(!empty($data)){
-    //         $user = new User($data["name"],$data["email"],$data["password"]);
-    //         if(!$user->insert()){
-    //             $response["error"] = [
-    //                 "code" => 400,
-    //                 "type" => "invalid_data",
-    //                 "message" => $user->getMessage()
-    //             ];
-    //             http_response_code(400);
-    //             echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    //             return;
-    //         }
-
-    //         $response["success"] = [
-    //             "code" => 200,
-    //             "type" => "success",
-    //             "message" => $user->getMessage(),
-    //             "user" => [
-    //                 "name" => $user->getName(),
-    //                 "email" => $user->getEmail(),
-    //             ]
-    //         ];
-
-    //         http_response_code(200);
-    //         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    //     
-    
        if(!empty($data)){
             $user = new User($data["name"],$data["email"],$data["password"]);
             if(!$user->insert()){
@@ -82,24 +55,6 @@ class Users extends Api
 
     public function login (array $data) : void
     {
-        /*
-        $user = new User();
-        if($user->auth($data["email"], $data["password"])){
-            $response = [
-                "code" => 200,
-                "type" => "success",
-                "message" => "Sucesso"
-            ];
-            echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-            return;
-        }
-        $response["error"] = [
-                "code" => 500,
-                "type" => "internal_server_error",
-                "message" => "Login não encontrado!"
-            ];
-            echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-            */
             if(!empty($this->token)){
                 $response = [
                     "user" => [
@@ -126,5 +81,13 @@ class Users extends Api
             $this->back($adresses->selectByIdUser($this->user->getId()),200);
         }
 
+    }
+
+    public function listUsers (array $data) : void
+    {
+        $users = (new User())->selectAllUsers();
+        $this->back($users,200);
+
+    //echo "Ol´s";
     }
 }

@@ -35,8 +35,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php
-				foreach($usersPanel as $user){
+				<!-- <?php
+				//foreach($usersPanel as $user){
 					?>
 					<tr>
 						<td><?=$user->id?></td>
@@ -45,16 +45,16 @@
 						<td>
 							<a href="#" class="btn btn-default">Edit</a> &nbsp; 
 							<a href="#" class="btn btn-default">Default</a>
-						</td>
+						</td> -->
 					</tr>
 				<?php
-				}
+				//}
 				?>
 			</tbody>
 		</table>
 	</div>
 	
-
+	<div id="divUsers"></div>
             
   
 
@@ -84,5 +84,32 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
+	<script type="module" async>
+    import {request, requestDebugError} from "<?php echo url("/assets/_shared/functions.js"); ?>";
+
+    const url = "<?php echo url("/api/userList"); ?>";
+
+    const options = {
+        method: "GET"
+    };
+
+    const getUsersPanel = async () => {
+        const usersPanel = await request(url, options);
+        console.log(usersPanel);
+    };
+
+    getUsersPanel();
+
+    //const button = document.querySelector("button");
+    window.addEventListener("reload", async () => {
+        const userPanels = await request(url, options);
+        console.log(userPanels);
+        userPanels.forEach((user) => {
+            console.log(faq);
+            document.querySelector("#divUsers").insertAdjacentHTML("beforeend", `<p>${user}/p>`);
+        });
+    });
+</script>
 </body>
 </html>

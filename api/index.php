@@ -22,7 +22,14 @@ $route->get("/user/login","Users:login");
 //$route->get("/user/adresses","Users:listAdresses");
 
 $route->get("/faqs","Faqs:listFaqs");
+
+$route->get("/user/list","Users:listUsers");
+
+
 $route->dispatch();
+
+
+
 
 /** ERROR REDIRECT */
 if ($route->error()) {
