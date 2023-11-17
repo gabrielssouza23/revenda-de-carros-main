@@ -45,6 +45,13 @@ class App
     //     ]);
     // }
 
+    public function profile()
+    {
+        //echo "Olá, Mundo! Perfil";
+        echo $this->view->render("profile");
+
+    }
+
     public function login (array $data) : void
     {
         echo $this->view->render("user-auth",[]);

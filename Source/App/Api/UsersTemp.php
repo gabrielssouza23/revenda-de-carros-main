@@ -4,7 +4,7 @@ namespace Source\App\Api;
 
 use Source\Models\User;
 
-class Faqs extends Api
+class UsersTemp extends Api
 {
     public function __construct()
     {
@@ -13,7 +13,11 @@ class Faqs extends Api
 
     public function listUsers (array $data) : void
     {
+        // $users = (new User())->selectAllUsers();
+        // $this->back($users,200);
         $users = (new User())->selectAllUsers();
         $this->back($users,200);
+    //echo "Ol´s";
     }
+
 }

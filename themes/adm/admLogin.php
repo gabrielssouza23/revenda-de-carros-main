@@ -1,4 +1,4 @@
-<h1>Login com API</h1>
+<h1>Login com ADM</h1>
 <div>
     <form id="formLogin">
         <div>E-mail: <input type="text" id="email" name="email" value=""></div>
@@ -13,7 +13,7 @@
     const formLogin = document.querySelector("#formLogin");
     formLogin.addEventListener("submit", (event) => {
         event.preventDefault();
-        const urlLogin = "<?= url("api/user/login"); ?>";
+        const urlLogin = "<?= url("api/adm/login"); ?>";
         const options = {
             method : "get",
             headers : {
@@ -22,15 +22,15 @@
             }
         };
         fetch(urlLogin,options).then(response => {
-            response.json().then(user => {
-                console.log(user.user);
-                localStorage.setItem("userLogin",JSON.stringify(user.user));
-                console.log(user);
-                if(user.error){
+            response.json().then(adm => {
+                console.log(adm.adm);
+                localStorage.setItem("userLogin",JSON.stringify(adm.adm));
+                console.log(adm);
+                if(adm.error){
                     alert("Erro ao fazer login!");
                 }
                 else{
-                    window.location.href = "<?= url("/"); ?>";;
+                    window.location.href = "<?= url("/admin"); ?>";;
                     // console.log(user);
                 }
             });

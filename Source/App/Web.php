@@ -77,6 +77,11 @@ class Web
         ]);
     }
 
+    public function carsListApi (array $data)
+    {
+        echo $this->view->render("carsList-Api",[]);
+    }
+    
     public function vehicleBuy (){
         echo $this->view->render("vehicleBuy");
     }

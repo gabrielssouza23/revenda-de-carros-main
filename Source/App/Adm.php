@@ -3,8 +3,9 @@
 namespace Source\App;
 
 use League\Plates\Engine;
-use Source\Models\Cars;
-use Source\Models\User;
+use Source\Models\Brands;
+
+
 
 class Adm
 {
@@ -22,17 +23,29 @@ class Adm
 
     public function carCreate(array $data): void
     {
-        $cars = new Cars();
+        $brands = new Brands();
         echo $this->view->render("carCreate", [
-            "cars" => $cars->selectAllCars()
+            "brands" => $brands->selectAll()
         ]);
     }
 
     public function userPanel(array $data): void
     {
-        $usersPanel = new User();
-        echo $this->view->render("userPanel", [
-            "usersPanel" => $usersPanel->selectAllUsers()
-        ]);
+        echo $this->view->render("userPanel", []);
     }
+
+    public function admLogin (): void
+    {
+        echo $this->view->render("admLogin",[]);
+    }
+
+    // public function brands ()
+    // {
+    //     $brands = new Brands();
+    //     echo $this->view->render(
+    //         "brands", [
+    //             "brands" => $brands->selectAll()
+    //         ]
+    //     );
+    // }
 }

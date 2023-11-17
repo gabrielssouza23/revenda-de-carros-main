@@ -11,7 +11,9 @@ $route = new Router(url(),":");
 $route->namespace("Source\App\Api");
 
 $route->get("/user","Users:read");
+
 $route->post("/user","Users:create");
+
 $route->get("/user/adresses","Users:listAdresses");
 
 
@@ -23,7 +25,24 @@ $route->get("/user/login","Users:login");
 
 $route->get("/faqs","Faqs:listFaqs");
 
-$route->get("/user/list","Users:listUsers");
+$route->get("/cars","CarsListApi:carsListApi");
+
+$route->post("/cars/photo","CarsListApi:updatePhoto");
+
+$route->get("/user/list","UsersTemp:listUsers");
+
+$route->post("/user/photo","Users:updatePhoto");
+
+$route->get("/cars/brand/{brand_id}", "CarsListApi:listByBrand");
+
+$route->get("/cars/{car_id}","CarsListApi:getCar");
+
+$route->get("/adm","Adms:read");
+
+$route->post("/adm","Adms:create");
+
+$route->get("/adm/login","Adms:login");
+
 
 
 $route->dispatch();
