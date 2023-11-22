@@ -8,3 +8,7 @@ const CONF_DB_NAME = "bd_revenda_de_carros"; // aqui deve ser alterado para o no
 
 const CONF_URL_BASE = "http://localhost/revenda-de-carros-main"; // para produção
 const CONF_URL_TEST = "http://localhost/revenda-de-carros-main"; //  para teste
+
+const CONF_UPLOAD_DIR = "storage";
+const CONF_UPLOAD_IMAGE_DIR = "images";
+const CONF_UPLOAD_FILE_DIR = "files";

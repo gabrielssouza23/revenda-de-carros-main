@@ -12,18 +12,22 @@ class User {
     private $email;
     private $password;
     private $address; // Atributo novo
+    private $photo;
     private $message;
+
 
     public function __construct (
         $name = null,
         $email = null,
         $password = null,
-        Address $address = null // Parametro novo
+        Address $address = null, // Parametro novo
+        $photo = null
     ){
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->address = $address; // Atribuição nova
+        $this->photo = $photo;
     }
     public function getId()
     {
@@ -68,6 +72,13 @@ class User {
         $this->password = $password;
     }
 
+    public function getPhoto(): ?string {
+        return $this->photo;
+    }
+    public function setPhoto(string $photo): void {
+        $this->photo = $photo;
+    }
+
     public function getMessage(): string
     {
         return $this->message;
@@ -79,7 +90,7 @@ class User {
             $this->message = "E-mail já cadastrado!";
             return false;
         }
-        $query = "INSERT INTO users VALUES (:name,:email,:password, NULL)";
+        $query = "INSERT INTO users VALUES (:name,:email,:password, NULL, NULL)";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
@@ -119,7 +130,7 @@ class User {
         $this->name = $user->name;
         $this->email = $user->email;
         $this->id = $user->id;
-        $this->message = "Usuário autenticado com sucesso";
+        $this->photo = $user->photo;
         return true;
     }
 
@@ -135,6 +146,7 @@ class User {
                 $this->id = $user->id;
                 $this->name = $user->name;
                 $this->email = $user->email;
+                $this->photo = $user->photo;
                 $this->password = $user->password;
                 return $this;
             }
@@ -157,6 +169,7 @@ class User {
                 $this->id = $user->id;
                 $this->name = $user->name;
                 $this->email = $user->email;
+                $this->photo = $user->photo;
                 return true;
             }
             $this->message = "Usuário não encontrado!";
@@ -175,12 +188,23 @@ class User {
             SELECT
                 u.id,
                 u.name,
-                u.email
+                u.email,
+                u.photo
             FROM
                 users u;
         ";
     
         $stmt = Connect::getInstance()->query($query);
         return $stmt->fetchAll();
+    }
+
+    public function uploadPhoto(string $photo) : bool
+    {
+        $query = "UPDATE users SET photo = :photo WHERE id = :id";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":photo",$photo);
+        $stmt->bindParam(":id",$this->id);
+        $stmt->execute();
+        return true;
     }
 }

@@ -11,17 +11,16 @@
 		* {
 			margin: 0;
 			padding: 0;
-			color: #f2f5f7;
 			font-family: sans-serif;
 			letter-spacing: 1px;
 			font-weight: 300;
 		}
-
+		
 		body {
 			overflow-x: hidden;
-
+			
 		}
-
+		
 		nav {
 			height: 6rem;
 			width: 100vw;
@@ -55,6 +54,7 @@
 		}
 
 		.nav-links li a {
+			color: #f2f5f7;
 			text-decoration: none;
 			margin: 0 0.7vw;
 		}

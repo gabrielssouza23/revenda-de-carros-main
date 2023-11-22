@@ -2,6 +2,8 @@
 
 namespace Source\App\Api;
 
+use CoffeeCode\Uploader\Image;
+use Exception;
 use Source\Models\Address;
 
 use Source\Models\User;
@@ -45,6 +47,8 @@ class Users extends Api
                     "id" => $user->getId(),
                     "name" => $user->getName(),
                     "email" => $user->getEmail(),
+                    "token" => $this->token
+
                 ]
             ];
 
@@ -61,11 +65,14 @@ class Users extends Api
                         "id" => $this->user->getId(),
                         "name" => $this->user->getName(),
                         "email" => $this->user->getEmail(),
-                        "token" => $this->token
+                        "photo" => $this->user->getPhoto(),
+                        "token" => $this->token,
+                        "type" => "success"
                 ]
                 ];
                 $this->back($response,200);
             }
+           // else{$this->back(["type" => "error"],400);}
 
         
 
@@ -83,11 +90,37 @@ class Users extends Api
 
     }
 
+    /*
+
     public function listUsers (array $data) : void
     {
+        // $users = (new User())->selectAllUsers();
+        // $this->back($users,200);
         $users = (new User())->selectAllUsers();
         $this->back($users,200);
-
     //echo "Ol´s";
+    }
+    */
+
+    public function updatePhoto(array $data): void
+    {
+        chdir("..");
+
+        $image = new Image(CONF_UPLOAD_DIR, CONF_UPLOAD_IMAGE_DIR);
+
+        $user = new User();
+        $user->findById($this->user->getId());
+
+        if ($_FILES) {
+            try {
+                $name = md5(uniqid(rand(), true));
+                $upload = $image->upload($_FILES['photo'], $name, 1000);
+                var_dump($upload);
+                $user->uploadPhoto($upload);
+                $this->back(["photo" => $upload], 200);
+            } catch (Exception $e) {
+                $this->back(["error" => $e->getMessage()], 400);
+            }
+        }
     }
 }

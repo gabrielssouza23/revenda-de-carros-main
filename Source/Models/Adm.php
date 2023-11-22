@@ -70,13 +70,14 @@ class Adm {
         return $this->message;
     }
 
+
     public function insert () : bool
     {
         if($this->findByEmail($this->email)){
             $this->message = "E-mail já cadastrado!";
             return false;
         }
-        $query = "INSERT INTO adms VALUES (:name,:email,:password, NULL)";
+        $query = "INSERT INTO adms VALUES (NULL, :name,:email,:password)";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
@@ -166,18 +167,5 @@ class Adm {
 
     
 
-    // public function selectAllUsers()
-    // {
-    //     $query = "
-    //         SELECT
-    //             a.id,
-    //             a.name,
-    //             a.email
-    //         FROM
-    //             adms a;
-    //     ";
-    
-    //     $stmt = Connect::getInstance()->query($query);
-    //     return $stmt->fetchAll();
-    // }
+  
 }

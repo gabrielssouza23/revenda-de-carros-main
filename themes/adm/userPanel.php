@@ -34,22 +34,7 @@
 					<th>Actions</th>
 				</tr>
 			</thead>
-			<tbody>
-				<!-- <?php
-				//foreach($usersPanel as $user){
-					?>
-					<tr>
-						<td><?=$user->id?></td>
-						<td><?=$user->name?></td>
-						<td><?=$user->email?></td>
-						<td>
-							<a href="#" class="btn btn-default">Edit</a> &nbsp; 
-							<a href="#" class="btn btn-default">Default</a>
-						</td> -->
-					</tr>
-				<?php
-				//}
-				?>
+			<tbody id="userTableBody">
 			</tbody>
 		</table>
 	</div>
@@ -88,28 +73,72 @@
 	<script type="module" async>
     import {request, requestDebugError} from "<?php echo url("/assets/_shared/functions.js"); ?>";
 
-    const url = "<?php echo url("/api/userList"); ?>";
+    const url = "<?php echo url("api/user/list"); ?>";
 
     const options = {
         method: "GET"
     };
 
-    const getUsersPanel = async () => {
-        const usersPanel = await request(url, options);
-        console.log(usersPanel);
-    };
+   
 
-    getUsersPanel();
+    const data = await request(url, options);
 
-    //const button = document.querySelector("button");
-    window.addEventListener("reload", async () => {
-        const userPanels = await request(url, options);
-        console.log(userPanels);
-        userPanels.forEach((user) => {
-            console.log(faq);
-            document.querySelector("#divUsers").insertAdjacentHTML("beforeend", `<p>${user}/p>`);
-        });
+    console.log(data);
+
+    const tableBody = document.getElementById('userTableBody');
+       // tableBody.innerHTML = ''; // Limpa o corpo da tabela antes de adicionar nova/ s linhas
+
+
+    data.forEach(user => {
+            
+            const row = document.createElement('tr');
+
+            const idCell = document.createElement('td');
+            idCell.textContent = user.id;
+            row.appendChild(idCell);
+
+            const nameCell = document.createElement('td');
+            nameCell.textContent = user.name;
+            row.appendChild(nameCell);
+
+            const emailCell = document.createElement('td');
+            emailCell.textContent = user.email;
+            row.appendChild(emailCell);
+
+            const actionsCell = document.createElement('td');
+            // const editButton = document.createElement('button');
+            // editButton.className = 'btn btn-default';
+            // editButton.textContent = 'Edit';
+            // // Adicione um evento de clique ao botão de edição, se necessário
+            // // editButton.addEventListener('click', () => { /* Lógica de edição */ });
+            // actionsCell.appendChild(editButton);
+
+            const defaultButton = document.createElement('button');
+            defaultButton.className = 'btn btn-default';
+            defaultButton.textContent = 'Default';
+            // Adicione um evento de clique ao botão padrão, se necessário
+            // defaultButton.addEventListener('click', () => { /* Lógica padrão */ });
+            actionsCell.appendChild(defaultButton);
+
+            row.appendChild(actionsCell);
+
+            tableBody.appendChild(row);
+               
     });
+ 
+
+/*
+    const getUsersPanel = async () => {
+	    
+        
+        
+    }
+
+document.addEventListener("DOMContentLoaded", getUsersPanel);
+*/
+
+
+
 </script>
 </body>
 </html>
