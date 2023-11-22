@@ -35,7 +35,11 @@ $route->post("/user/photo","Users:updatePhoto");
 
 $route->get("/cars/brand/{brand_id}", "CarsListApi:listByBrand");
 
+<<<<<<< HEAD
 $route->get("/cars/{car_id}","CarsListApi:getCars");
+=======
+$route->get("/cars/{car_id}","CarsListApi:getCar");
+>>>>>>> 48d1357f31b176c5807f6636ce831cf47284b040
 
 $route->get("/adm","Adms:read");
 

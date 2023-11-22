@@ -56,8 +56,12 @@ class CarsListApi extends ApiAdm
 
     public function getCars(array $data): void
     {
+<<<<<<< HEAD
         
         $car = (new Cars())->selectById($data["car_id"]);
+=======
+        $car = (new Cars())->selectById($data["brand_id"]);
+>>>>>>> 48d1357f31b176c5807f6636ce831cf47284b040
         $this->back($car,200);
     }
 
