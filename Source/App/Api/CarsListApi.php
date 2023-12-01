@@ -48,6 +48,12 @@ class CarsListApi extends ApiAdm
         $this->back($cars,200);
     }
 
+    public function listByBrandCar (array $data) : void
+    {
+        $cars = (new Cars())->selectByCategoryIdCar($data["car_id"]);
+        $this->back($cars,200);
+    }
+
     public function listCars (array $data) : void
     {
         $cars = (new Cars())->selectAllCars();
@@ -56,12 +62,8 @@ class CarsListApi extends ApiAdm
 
     public function getCars(array $data): void
     {
-<<<<<<< HEAD
         
-        $car = (new Cars())->selectById($data["car_id"]);
-=======
         $car = (new Cars())->selectById($data["brand_id"]);
->>>>>>> 48d1357f31b176c5807f6636ce831cf47284b040
         $this->back($car,200);
     }
 

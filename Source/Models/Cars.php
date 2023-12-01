@@ -160,9 +160,21 @@ class Cars
 
     public function selectByBrand(string $brandName)
     {
-        $query = "SELECT c.model, b.name, c.price, c.year, c.description from cars c 
-        join brands b on b.id = c.brands_id 
-        where b.name like('{$brandName}')";
+        $query = "SELECT
+        c.id,
+        c.model,
+        b.name AS brand,
+        c.price,
+        c.year,
+        c.description,
+        c.photo
+    FROM
+        cars c
+    JOIN
+        brands b ON c.brands_id = b.id
+    WHERE
+        b.name LIKE '{$brandName}';
+    ";
         $stmt = Connect::getInstance()->query($query);
         return $stmt->fetchAll();
     }
@@ -176,9 +188,42 @@ class Cars
 
     public function selectByCategoryId(int $categoryId)
     {
-        $query = "SELECT c.model, b.name, c.price, c.year, c.description from cars c 
-        join brands b on b.id = c.brands_id 
-        where b.id = {$categoryId}";
+        $query = "SELECT
+        c.id,
+        c.model,
+        b.name AS brand,
+        c.price,
+        c.year,
+        c.description
+    FROM
+        cars c
+    JOIN
+        brands b ON b.id = c.brands_id
+    WHERE
+        b.id = {$categoryId};
+    ";
+        $stmt = Connect::getInstance()->query($query);
+        return $stmt->fetchAll();
+    }
+
+    public function selectByCategoryIdCar(int $carId)
+    {
+        $query = "SELECT
+        c.id,
+        c.model,
+        b.name AS brand,
+        c.price,
+        c.year,
+        c.description,
+        c.photo
+    FROM
+        cars c
+    JOIN
+        brands b ON b.id = c.brands_id
+    WHERE
+        c.id = {$carId};
+    ;
+    ";
         $stmt = Connect::getInstance()->query($query);
         return $stmt->fetchAll();
     }
