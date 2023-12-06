@@ -228,6 +228,16 @@ class Cars
         return $stmt->fetchAll();
     }
 
+    public function deleteCar(int $carId)
+    {
+        $query = "DELETE FROM cars
+        WHERE id = {$carId};        
+    ;
+    ";
+        $stmt = Connect::getInstance()->query($query);
+        return $stmt->fetchAll();
+    }
+
     public function uploadPhoto(string $photo): bool
     {
         $query = "UPDATE cars SET photo = :photo";

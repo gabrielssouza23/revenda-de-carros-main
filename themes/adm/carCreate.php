@@ -275,10 +275,31 @@
 
         if (event.target.tagName === "BUTTON") {
             console.log(`Apagar: ${event.target.parentNode.parentNode.getAttribute("data-id")}`);
-            //event.stopPropagation();
-            // Requisisão para deleteCourse
-            //event.target.parentNode.parentNode.remove();
+
+            const urlDeleteCar = "<?= url("api/cars/brand/delete/"); ?>" + selectBrand.value + "/" + event.target.parentNode.parentNode.getAttribute("data-id");
+            const optionsDeleteCar = {
+                method: "delete"
+            };
+
+            fetch(urlDeleteCar, optionsDeleteCar)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Erro ao excluir o carro: ${response.status}`);
+                    }
+                    console.log("Carro excluído com sucesso");
+                    // Faça algo após a exclusão, como recarregar a lista de carros
+                    // ou atualizar a interface de usuário
+                })
+                .catch((error) => {
+                    console.error("Erro:", error);
+                });
+
         }
+
+        //event.stopPropagation();
+        // Requisisão para deleteCourse
+        //event.target.parentNode.parentNode.remove();
+
 
     });
 

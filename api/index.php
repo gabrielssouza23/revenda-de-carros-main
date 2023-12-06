@@ -37,6 +37,8 @@ $route->get("/cars/brand/{brand_id}", "CarsListApi:listByBrand");
 
 $route->get("/cars/brand/{brand_id}/{car_id}", "CarsListApi:listByBrandCar");
 
+$route->get("/cars/brand/delete/{brand_id}/{car_id}", "CarsListApi:deleteCar");
+
 $route->get("/cars/{car_id}","CarsListApi:getCars");
 
 

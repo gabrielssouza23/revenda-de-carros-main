@@ -54,6 +54,12 @@ class CarsListApi extends ApiAdm
         $this->back($cars,200);
     }
 
+    public function deleteCar (array $data) : void
+    {
+        $cars = (new Cars())->deleteCar($data["car_id"]);
+        $this->back($cars,200);
+    }
+
     public function listCars (array $data) : void
     {
         $cars = (new Cars())->selectAllCars();
